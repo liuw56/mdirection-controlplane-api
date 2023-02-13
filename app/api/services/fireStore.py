@@ -28,20 +28,21 @@ def get_related_products(db,source):
 
 def search_function(db,keywords):
     try:
+        keywords = keywords.lower()
         products = []
         productsInfo = db.collection('productDetail').get()
         for product in productsInfo:
             product = product.to_dict()
             print(product)
-            if keywords in product["ID"]:
+            if keywords in product["ID"].lower():
                 products.append(product)
-            elif keywords in product["source"]:
+            elif keywords in product["source"].lower():
                 products.append(product)
-            elif keywords in product["description"]:
+            elif keywords in product["description"].lower():
                 products.append(product)
-            elif keywords in product["enSpecies"]:
+            elif keywords in product["enSpecies"].lower():
                 products.append(product)
-            elif keywords in product["sequence"]:
+            elif keywords in product["sequence"].lower():
                 products.append(product)
         print(products)
         return products
