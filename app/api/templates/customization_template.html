@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<title>Our Funky HTML Page</title>
+<meta name="description" content="Our first page">
+<meta name="keywords" content="html tutorial template">
+</head>
+<body>
+<h1>Hi,</h1>
+<p>You have received a new customization request from {{ fullName }}.</p>
+{% for item in data %}
+    <h4>Protein Name</h4>
+    <p>{{item.proteinName}}</p>
+    <h4>Express System</h4>
+    <p>{{item.expressSystem}}</p>
+    <h4>Gen Bank ID</h4>
+    <p>{{item.genBankID}}</p>
+    <h4>StartFrom</h4>
+    <p>{{item.startFrom}}</p>
+    <h4>Comments</h4>
+    <p>{{item.comments}}</p>
+{% endfor %}
+<br/><br/><br/>
+<h2>Contact Info</h2>
+<p>Full Name: {{ fullName }}</p>
+<p>Email: {{ email }}</p>
+</body>
+</html>
