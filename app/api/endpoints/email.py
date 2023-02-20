@@ -1,4 +1,4 @@
-from api.models.email import CustomizationRequest
+from api.models.email import CustomizationRequest, ContactUs
 from fastapi import APIRouter, Request
 import api.services.email as email
 from api.models.email import CustomizationRequest
@@ -7,13 +7,15 @@ router = APIRouter(
     tags=["email"]
 )
 
-@router.post("/")
+@router.post("/customization")
 def send_customize_email(request: Request,
 custimazation: CustomizationRequest
 ):
     return email.send_customization_email(custimazation)
 
-@router.get("/email")
-def read_root(request: Request
+@router.post("/contact-us")
+def read_root(request: Request,
+contactUs: ContactUs
+
 ):
-    return email.get_customization_template()
+    return email.send_contact_us_email(contactUs)
