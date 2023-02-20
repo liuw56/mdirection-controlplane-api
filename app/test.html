@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+        fetch("https://mdirectionapi.onrender.com/api/firestore/relatedProduct/HEK293").then((Response) => {
+            return Response.json()
+        }).then((data) => {
+            console.log(data);
+        })
+    </script>
+</body>
+</html>
