@@ -1,5 +1,5 @@
 import html
-from api.models.email import CustomizationRequest
+from api.models.email import ContactUs, CustomizationRequest
 from jinja2 import Environment, PackageLoader, select_autoescape
 import smtplib, ssl
 import os, json
@@ -15,14 +15,13 @@ env = Environment(
     autoescape=select_autoescape(['html'])
 )
 
-def send_email(template):
+def send_email(template, subject):
     sender_email = os.environ.get("SENDER_EMAIL")
     receiver_email = json.loads(os.environ.get("RECEIVER_EMAIL"))
 
-    print(receiver_email)
     password = os.environ.get("EMAIL_PW")
     msg = MIMEMultipart('alternative')
-    msg['Subject'] = "TEST"
+    msg['Subject'] = subject
     msg['From'] = sender_email
     msg['To'] = str(receiver_email)
     msg.attach(MIMEText(template, 'html'))
@@ -42,6 +41,12 @@ def send_email(template):
 
 def send_customization_email(data: CustomizationRequest):
     template = env.get_template('customization_template.html')
-    body:str = template.render(fullName=data.fullName, email=data.fullName, data = data.items)
-    send_email(body)
+    body:str = template.render(fullName=data.fullName, email=data.email, data = data.items)
+    send_email(body, "Customization Request")
+    return 
+
+def send_contact_us_email(data: ContactUs):
+    template = env.get_template('contact_us_template.html')
+    body:str = template.render(fullName=data.fullName, email=data.email, message=data.message)
+    send_email(body, "You have received a New Message")
     return 

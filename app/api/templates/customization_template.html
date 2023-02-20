@@ -1,12 +1,12 @@
 <!doctype html>
 <html>
 <head>
-<title>Our Funky HTML Page</title>
+<title>Customization Request</title>
 <meta name="description" content="Our first page">
 <meta name="keywords" content="html tutorial template">
 </head>
-<body>
-<h1>Hi,</h1>
+<body style="color: black;">
+<p>Hi,</p>
 <p>You have received a new customization request from {{ fullName }}.</p>
 {% for item in data %}
     <h4>Protein Name</h4>
@@ -20,7 +20,7 @@
     <h4>Comments</h4>
     <p>{{item.comments}}</p>
 {% endfor %}
-<br/><br/><br/>
+<br/><br/>
 <h2>Contact Info</h2>
 <p>Full Name: {{ fullName }}</p>
 <p>Email: {{ email }}</p>

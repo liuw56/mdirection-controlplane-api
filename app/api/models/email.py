@@ -24,3 +24,8 @@ class CustomizationRequest(BaseModel):
     fullName: str
     email: str
     message: str
+
+class ContactUs(BaseModel):
+    fullName: str
+    email: str
+    message: str
