@@ -16,9 +16,10 @@ env = Environment(
 )
 
 def send_email(template, subject):
+    print(os.environ.get("SENDER_EMAIL"))
+    print(os.environ.get("RECEIVER_EMAIL"))
     sender_email = os.environ.get("SENDER_EMAIL")
     receiver_email = json.loads(os.environ.get("RECEIVER_EMAIL"))
-
     password = os.environ.get("EMAIL_PW")
     msg = MIMEMultipart('alternative')
     msg['Subject'] = subject

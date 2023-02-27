@@ -7,11 +7,11 @@ router = APIRouter(
     prefix="/firestore",
     tags=["firestore"]
 )
-db  = connect_fb_db("serviceAccountKey.json")
+db, bucket  = connect_fb_db("serviceAccountKey.json")
 @router.get("/allProducts")
 def get_all_documents(response:Response):
     try:
-        products = fireStore.get_all_documents(db)
+        products = fireStore.get_all_documents(db,bucket)
         response.status_code = 200
         return products
     except:

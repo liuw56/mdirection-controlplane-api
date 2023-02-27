@@ -1,8 +1,10 @@
 import firebase_admin
-from firebase_admin import credentials, firestore
+from firebase_admin import credentials, firestore, storage
+
 
 def connect_fb_db(keyConfig):
     cred = credentials.Certificate(keyConfig)
-    firebase_admin.initialize_app(cred)
+    firebase_admin.initialize_app(cred, {'storageBucket': 'mdirectionbiotechweb.appspot.com'})
     db = firestore.client()
-    return db
+    bucket = storage.bucket()
+    return db , bucket
