@@ -10,8 +10,6 @@ def get_all_documents(db,bucket) -> list:
         return products
     except:
         raise Exception("FireStore get Error")
-def check_update_url(db,bucket):
-
 def create_new_product(db,productInfo:Product):
     try:
         db.collection('productDetail').document(productInfo["ID"]).set(productInfo)
