@@ -34,15 +34,15 @@ def search_function(db,keywords):
         for product in productsInfo:
             product = product.to_dict()
             print(product)
-            if keywords in product["ID"].lower():
+            if "ID" in product and keywords in product["ID"].lower():
                 products.append(product)
-            elif keywords in product["source"].lower():
+            elif "source" in product and keywords in product["source"].lower():
                 products.append(product)
-            elif keywords in product["description"].lower():
+            elif "description" in product and keywords in product["description"].lower():
                 products.append(product)
-            elif keywords in product["enSpecies"].lower():
+            elif "enSpecies" in product and keywords in product["enSpecies"].lower():
                 products.append(product)
-            elif keywords in product["sequence"].lower():
+            elif "sequence" in product and keywords in product["sequence"].lower():
                 products.append(product)
         print(products)
         return products
